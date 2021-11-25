@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width-device-width, initial-scale-1.0">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700" rel="stylesheet">
+   <title>Calculadora</title>
+   <link rel="StyleSheet" href="style.css">
+
+   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-Bbhd1vQF/xTY9gja0Dq3HiwQF8LaCRTXxZKRute1T44="
+   crossorigin="anonymous"></script>
+
+   <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+   <script>
+      $(document).ready(function(){
+         var valor1, valor2, op, resultadoF;
+
+
+//-------------------------limpar tudo
+         $("#limpartd").on("click", function(){
+               $("#resultado1").val("");
+               $("#resultado2").val("");
+         });
+// ------------------- Programação dos botoes numericos
+         $("input[name=btn]").click(function(){
+           $("#resultado2").val($("#resultado2").val() + $(this).val());
+         });
+// ------------------- Programação dos operadores--------------------
+         //soma
+         $("#soma").on("click", function(){
+            valor1 = parseFloat($("#resultado2").val());
+            //Se valor1 for diferente de nada ele vai pegar atribuir o valor da caixa em valor11 e apagar o conteudo da caixa.
+            if (valor1 != "") {
+               //mandando para caixa de historico
+               $("#resultado1").val(valor1 + " + ");
+               //coletando a operacao
+               op = "soma";
+               //apagando valor da caixa
+               $("#resultado2").val("");
+            } else if (valor1 == "") {
+               $("#resultado2").val("Não contem valores!");
+            }
+         });
+         //Subtracao
+         $("#sub").on("click", function(){
+            valor1 = parseFloat($("#resultado2").val());
+            //Se valor1 for diferente de nada ele vai pegar atribuir o valor da caixa em valor11 e apagar o conteudo da caixa.
+            if (valor1 != "") {
+               //mandando para caixa de historico
+               $("#resultado1").val(valor1 + " - ");
+               //coletando a operacao
+               op = "sub";
+               //apagando valor da caixa
+               $("#resultado2").val("");
+            } else if (valor1 == "") {
+               $("#resultado2").val("Não contem valores!");
+            }
+         });
+         //Multiplicacao
+         $("#mult").on("click", function(){
+            valor1 = parseFloat($("#resultado2").val());
+            //Se valor1 for diferente de nada ele vai pegar atribuir o valor da caixa em valor11 e apagar o conteudo da caixa.
+            if (valor1 != "") {
+               //mandando para caixa de historico
+               $("#resultado1").val(valor1 + " x ");
+               //coletando a operacao
+               op = "mult";
+               //apagando valor da caixa
+               $("#resultado2").val("");
+            } else if (valor1 == "") {
+               $("#resultado2").val("Não contem valores!");
+            }
+         });
+         //Divisao
+         $("#div").on("click", function(){
+            valor1 = parseFloat($("#resultado2").val());
+            //Se valor1 for diferente de nada ele vai pegar atribuir o valor da caixa em valor11 e apagar o conteudo da caixa.
+            if (valor1 != "") {
+               //mandando para caixa de historico
+               $("#resultado1").val(valor1 + " / ");
+               //coletando a operacao
+               op = "div";
+               //apagando valor da caixa
+               $("#resultado2").val("");
+            } else if (valor1 == "") {
+               $("#resultado2").val("Não contem o primeiro valor!");
+            }
+         });
+         $("#inv").on("click", function(){
+            valor1 = parseFloat($("#resultado2").val());
+            //Se valor1 for diferente de nada ele vai pegar atribuir o valor da caixa em valor11 e apagar o conteudo da caixa.
+            if (valor1 != "") {
+               //mandando para caixa de historico
+               $("#resultado2").val(valor1 * -1);
+            } else if (valor1 == "") {
+               $("#resultado2").val("Não contem o primeiro valor!");
+            }
+         }); 
+
+//----------------------Botão igual-----------------------------
+         $("#igual").on("click", function(){
+            valor2 = parseFloat($("#resultado2").val());
+
+            if (valor2 == "") {
+               $("#resultado2").val("Não contem o segundo valor!");
+            }
+
+            if (op == "soma") {
+               resultadoF = (valor1 + valor2);
+               $("#resultado2").val(resultadoF);
+               $("#resultado1").val(valor1 + " + " + valor2);
+            }
+            if (op == "sub") {
+               resultadoF = (valor1 - valor2);
+               $("#resultado2").val(resultadoF);
+               $("#resultado1").val(valor1 + " - " + valor2);
+            }
+            if (op == "mult") {
+               resultadoF = (valor1 * valor2);
+               $("#resultado2").val(resultadoF);
+               $("#resultado1").val(valor1 + " x " + valor2);
+            }
+            if (op == "div") {
+               resultadoF = (valor1 / valor2);
+               $("#resultado2").val(resultadoF);
+               $("#resultado1").val(valor1 + " / " + valor2);
+            }            
+         });
+
+//-------------------Limpar o visor principal
+         $("#limpar").on("click", function(){
+            var len = $("#resultado2").val().length;
+
+            var valor = $("#resultado2").val();
+
+            valor = valor.replace(valor.charAt(len - 1), "");
+
+            $("#resultado2").val(valor);
+         });
+
+      });
+      
+   
+   </script>
+
+</head>
+<body>  
+   <div class="container">
+      <div class="calculadora">
+         <div class="visor2">
+            <input type="text" id="resultado1" name="resultado1" value="" />
+         </div>
+         <div class="visor">
+            <input type="text" id="resultado2" name="resultado2" value="" />
+         </div>
+            <div>
+               <button class="teclas"  id="limpar" >C</button> 
+               <button class="teclas"  id="limpartd" >CE</button> </br></br></br></br>
+               <input type="button" value="7" name="btn" class="teclas">
+               <input type="button" value="8" name="btn" class="teclas">
+               <input type="button" value="9" name="btn" class="teclas">
+               <input type="button" value="/" name="btn-op" id="div" class="teclas">
+               <input type="button" value="4" name="btn" class="teclas">
+               <input type="button" value="5" name="btn" class="teclas">
+               <input type="button" value="6" name="btn" class="teclas">
+               <input type="button" value="*" name="btn-op" id="mult" class="teclas">
+               <input type="button" value="1" name="btn" class="teclas">
+               <input type="button" value="2" name="btn" class="teclas">
+               <input type="button" value="3" name="btn" class="teclas">
+               <input type="button" value="-" name="btn-op" id="sub" class="teclas">
+               <input type="button" value="+/-" name="+/-" id="inv" class="teclas">
+               <input type="button" value="0" name="btn" class="teclas">
+               <input type="button" value="." name="btn" class="teclas">
+               <input type="button" value="+" name="btn-op" id="soma" class="teclas">
+               <input type="button" value="=" name="btn-op" id="igual" class="igual">
+            </div>
+      </div>
+   </div>
+</body>
+</html>

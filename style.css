@@ -1,0 +1,56 @@
+﻿body{
+	font-family: 'Open Sans',sans-serif;
+	background-color: rgb(255, 255, 255);
+}
+.calculadora{
+	width: 420px;
+	height: 520px;
+	background-color: #eaedef;
+	margin: 0 auto;
+	top: 20px;
+	position: relative;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.visor input{
+	text-align: right;
+	width: 340px;
+	height: 30px;
+	margin: 0 10px 30px 35px;
+	padding-top: 20px;
+	font-size: 30px;
+	color: #919191;
+}
+.visor2 input{
+	margin-top: 20px ;
+	text-align: right;
+	height: 20px;
+	width: 340px;
+	margin: 10px 10px 0px 35px;
+	padding-top: 20px;
+	font-size: 15px;
+	color: #919191;
+}
+.teclas{
+	width: 95px;
+	height: 55px;
+	float: left;
+	margin:  1px 1px 1px 1px;
+	border-width: 0;
+	font-weight: bold;
+	font-size: 18px;
+	border-radius: 3%;
+}
+.igual{
+	background-color: aqua;
+	width: 10px;
+	margin: 1px 90px 1px 1px;
+		width: 95px;
+	height: 55px;
+	float: left;
+	margin:  1px 1px 1px 1px;
+	border-width: 0;
+	font-weight: bold;
+	font-size: 18px;
+	border-radius: 3%;
+}
